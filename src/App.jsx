@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import MovieList from '../Components/MovieList'
+import SearchBar from '../Components/SearchBar'
 
 const App = () => {
+
+  
+
   return (
-    <div>App</div>
+    <>
+      <SearchBar/>
+      <MovieList/>
+    </>
   )
 }
 
