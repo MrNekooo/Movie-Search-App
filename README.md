@@ -45,9 +45,6 @@ src/
 * Better error messages
 * Skeleton loading states
 
-## Screenshot
-
-Add screenshots of the application here.
 
 ## License
 
