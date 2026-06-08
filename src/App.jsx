@@ -1,52 +1,99 @@
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../Components/SearchBar';
 import MovieList from '../Components/MovieList';
+import MoviesDetails from '../Components/MoviesDetails';
 
 const App = () => {
 
+  const API_KEY = "6e1fea8";
+
   const[movies, setMovies] = useState([])
+  const[hasSearched, setHasSearch] = useState(false)
   const[loading, setLoading] = useState(false)
+  const[movieDetails, setMovieDetails] = useState(null)
+  const[showDetails, setShowDetails] = useState(false)
 
   // useEffect(() => {
   //   document.title = "Batman"
   // },[])
 
-  const API_KEY = "6e1fea8";
+  // useEffect(() => {
+  //   console.log(movieDetails); 
+  // }, [movieDetails]);
 
-    async function searchMovies(title) {
-      
-      try{
 
-        setLoading(true)
+  async function searchMovies(title) {
+    
+    try{
 
-        const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${title}`)
+      setLoading(true)
 
-        const data = await res.json()
+      const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${title}`)
 
-        if (data.Response === "False") {
+      const data = await res.json()
 
-          setMovies([]);
-          return;
-        }
-        
-        setMovies(data.Search)
+      if (data.Response === "False") {
 
-      } catch(error) {
-
-        console.log(error)
-
-      } finally {
-
-        setLoading(false)
-
+        setMovies([]);
+        setHasSearch(true)
+        return;
       }
+      
+      setMovies(data.Search)
+      setMovieDetails(null)
+      setShowDetails(false)
+      setHasSearch(false)
+
+    } catch(error) {
+
+      console.log(error)
+
+    } finally {
+
+      setLoading(false)
 
     }
 
+  }
+
+  async function getMovieDetails(id) {
+    
+    try{
+
+      setLoading(true)
+
+      const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`)
+
+      const data = await res.json()
+
+      if (data.Response === "False") {
+
+        setMovieDetails(null);
+        return;
+      }
+      
+      setMovieDetails(data)
+      setShowDetails(true)
+
+    } catch(error) {
+
+      console.log(error)
+
+    } finally {
+
+      setLoading(false)
+
+    }
+
+  }
+
   return (
     <div className=' min-h-screen bg-gray-800 text-white py-10 px-20 flex flex-col gap-5 max-2xl:px-10 max-md:px-2'>
+    
       <SearchBar movies={movies} onSearch={searchMovies}/>
-      <MovieList movies={movies} loading={loading} />
+      <MovieList movies={movies} loading={loading} onSelectedMovie={getMovieDetails} hasSearched={hasSearched} />
+      {showDetails && <MoviesDetails movieDetails={movieDetails} setShowDetails={setShowDetails} />}
+
     </div>
   )
 }

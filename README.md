@@ -36,13 +36,13 @@ src/
 
 ## Future Improvements
 
-* Movie details page
+✅ Movie details page
 * Pagination
 * Search history using LocalStorage
 * Debounced search
 * Dark / Light mode
 * Favorites list
-* Better error messages
+🔃 Better error messages
 * Skeleton loading states
 
 
