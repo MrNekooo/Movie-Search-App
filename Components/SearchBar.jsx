@@ -24,9 +24,9 @@ const SearchBar = ({ onSearch }) => {
                     value={inputValue} 
                     onChange={(e) => setInputValue(e.target.value)} 
                     onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                    className={` transition-all duration-100 text-white w-100 outline-none focus:bg-gray-700/70 py-1 px-3 rounded-full font-semibold max-sm:w-50 ${empty && "bg-red-500 ring-3 ring-red-400 "} `}/>
+                    className={` transition-all duration-100 text-white w-100 outline-none focus:bg-gray-700/70 py-2 px-3 rounded-full font-semibold max-sm:w-50 ${empty && "bg-red-500 ring-3 ring-red-400 "} `}/>
 
-            <button className='cursor-pointer py-1 px-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-100' onClick={handleSearch}>Search</button>
+            <button className='cursor-pointer py-2 px-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-100' onClick={handleSearch}>Search</button>
         </div>
     )
 }
