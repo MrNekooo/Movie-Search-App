@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 
 import { HiHeart } from 'react-icons/hi'
 import { BiUser } from 'react-icons/bi';
@@ -18,7 +18,6 @@ const App = () => {
   const[showDetails, setShowDetails] = useState(false)
   const[loading, setLoading] = useState(false)
 
-  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -68,11 +67,11 @@ const App = () => {
   }
 
   return (
-    <div className=' min-h-screen bg-linear-120 from-indigo-800 to-pink-800 text-white py-10 px-20 flex flex-col gap-5 max-2xl:px-10 max-md:px-2'>
+    <div className=' min-h-screen bg-linear-120 from-indigo-800 to-pink-800 text-white py-10 px-10 flex flex-col gap-5 max-md:px-2'>
 
       <ul className='flex font-semibold'>
-        <button className='cursor-pointer' onClick={() => navigate('/')}><li className='transition-all duration-300 px-5 pb-1 border-b-3 border-b-white/50 hover:border-b-white'>Home</li></button>
-        <button className='cursor-pointer' onClick={() => navigate('/favorites')}><li className='transition-all duration-300 px-5 pb-1 border-b-3 border-b-white/50 hover:border-b-white'>Your Favorites</li></button>
+        <NavLink to='/' className={({isActive}) => isActive ? 'text-white' : 'text-white/30' }><button className={`cursor-pointer `}><li className='transition-all duration-300 px-5 pb-1 border-b-3 border-b-white/50 hover:border-b-white'>Home</li></button></NavLink>
+        <NavLink to='/favorites' className={({isActive}) => isActive ? 'text-white' : 'text-white/30' }><button className={`cursor-pointer `}><li className='transition-all duration-300 px-5 pb-1 border-b-3 border-b-white/50 hover:border-b-white'>Your Favorites</li></button></NavLink>
       </ul>
     
       <Routes>

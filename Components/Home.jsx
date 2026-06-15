@@ -49,7 +49,7 @@ const Home = ({movies, setMovies, movieDetails, setMovieDetails, showDetails, se
 
     return (
         <div>
-            <h1 className='mx-auto text-center mb-10 font-bold text-8xl max-w-200 max-sm:text-4xl max-sm:max-w-80'>Find That Movie You Want To See</h1>
+            <h1 className='mx-auto text-center my-10 font-bold text-8xl max-w-200 max-sm:text-4xl max-sm:max-w-80'>Find That Movie You Want To See</h1>
 
             <SearchBar movies={movies} onSearch={searchMovies}/>
             <MovieList movies={movies} loading={loading} onSelectedMovie={getMovieDetails} hasSearched={hasSearched} favorites={favorites} setFavorites={setFavorites} />
