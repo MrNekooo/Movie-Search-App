@@ -27,7 +27,7 @@ const SearchBar = ({ onSearch }) => {
                     onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                     className={` transition-all duration-100 text-white w-full outline-none focus:bg-gray-700/70 py-2 px-3 rounded-full font-semibold  ${empty && "bg-red-500 ring-3 ring-red-400 "} `}/>
 
-            <button className='cursor-pointer py-2 px-10 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-100 max-[400px]:px-5' onClick={handleSearch}>Search</button>
+            <button className='cursor-pointer py-2 px-10 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-100 max-[450px]:px-5' onClick={handleSearch}>Search</button>
         </div>
     )
 }

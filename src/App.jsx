@@ -68,7 +68,7 @@ const App = () => {
   }
 
   return (
-    <div className=' min-h-screen bg-gray-800 text-white py-10 px-20 flex flex-col gap-5 max-2xl:px-10 max-md:px-2'>
+    <div className=' min-h-screen bg-linear-120 from-indigo-800 to-pink-800 text-white py-10 px-20 flex flex-col gap-5 max-2xl:px-10 max-md:px-2'>
 
       <ul className='flex font-semibold'>
         <button className='cursor-pointer' onClick={() => navigate('/')}><li className='transition-all duration-300 px-5 pb-1 border-b-3 border-b-white/50 hover:border-b-white'>Home</li></button>

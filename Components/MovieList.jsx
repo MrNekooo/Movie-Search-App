@@ -18,14 +18,16 @@ const MovieList = ({movies, loading, onSelectedMovie, hasSearched, favorites, se
         <>
             <p className='text-center mt-10 font-semibold'> {loading && "LOADING . . ."} </p>
             <> {hasSearched && <p className='text-center font-semibold text-red-500'> No Movies Found </p>} </>
-            <ul className='grid grid-cols-6 gap-5 min-h-150 max-2xl:grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1'>
+            <ul className='grid grid-cols-5 gap-5 min-h-150 max-2xl:grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1'>
                 {movies.map((movie) => (
 
                     <li     key={movie.imdbID}
-                            className=' flex flex-col justify-between items-center cursor-pointer hover:scale-101 transition-all duration-100 gap-3 p-2 rounded-xl max-sm:w-70 m-auto'
+                            className=' flex flex-col justify-between items-center bg-linear-120 to-gray-800 from-black/60 cursor-pointer hover:scale-101 transition-all duration-100 gap-3 p-3 rounded-2xl max-sm:w-70 m-auto '
                             onClick={() => onSelectedMovie(movie.imdbID)}>
                         
-                        <img className=' rounded-xl h-100 w-full object-cover' src={movie.Poster} alt={movie.Title} />
+                        <div className='w-full'>
+                            <img className=' rounded-xl h-100 object-cover' src={movie.Poster} alt={movie.Title} />
+                        </div>
 
                         <div className=' flex justify-between items-center w-full h-20'>
                         
