@@ -37,11 +37,11 @@ src/
 ## Future Improvements
 
 * ✅ Movie details page
-* Pagination
+* 🔃 Pagination
 * Search history using LocalStorage
 * Debounced search
 * Dark / Light mode
-* Favorites list
+* ✅ Favorites list
 * 🔃 Better error messages
 * Skeleton loading states
 
