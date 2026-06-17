@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import { HiHeart } from 'react-icons/hi'
-import { BiUser } from 'react-icons/bi';
 
 import Home from '../Components/Home';
 import Favorites from '../Components/Favorites';
 import MoviePage from '../Components/MoviePage';
 import NotFound from '../Components/NotFound';
+import Layout from '../Components/Layout';
 
 const App = () => {
 
@@ -68,21 +67,20 @@ const App = () => {
 
   return (
     <div className=' min-h-screen bg-linear-120 from-indigo-800 to-pink-800 text-white py-10 px-10 flex flex-col gap-5 max-md:px-2'>
-
-      <ul className='flex font-semibold'>
-        <NavLink to='/' className={({isActive}) => isActive ? 'text-white' : 'text-white/30' }><button className={`cursor-pointer `}><li className='transition-all duration-300 px-5 pb-1 border-b-3 border-b-white/50 hover:border-b-white'>Home</li></button></NavLink>
-        <NavLink to='/favorites' className={({isActive}) => isActive ? 'text-white' : 'text-white/30' }><button className={`cursor-pointer `}><li className='transition-all duration-300 px-5 pb-1 border-b-3 border-b-white/50 hover:border-b-white'>Your Favorites</li></button></NavLink>
-      </ul>
     
       <Routes>
 
-        <Route path='/' element={<Home movies={movies} setMovies={setMovies} movieDetails={movieDetails} setMovieDetails={setMovieDetails} getMovieDetails={getMovieDetails} favorites={favorites} setFavorites={setFavorites} loading={loading} setLoading={setLoading} />}/>
+        <Route element={<Layout/>}>
 
-        <Route path='/favorites' element={<Favorites favorites={favorites} setFavorites={setFavorites} setDeleteIds={setDeleteIds} deleteIds={deleteIds} getMovieDetails={getMovieDetails} movieDetails={movieDetails} />} />
+          <Route path='/' element={<Home movies={movies} setMovies={setMovies} movieDetails={movieDetails} setMovieDetails={setMovieDetails} getMovieDetails={getMovieDetails} favorites={favorites} setFavorites={setFavorites} loading={loading} setLoading={setLoading} />}/>
 
-        <Route path='/movie/:id' element={<MoviePage onSelectedMovie={getMovieDetails} movieDetails={movieDetails} loading={loading} />}/>
+          <Route path='/favorites' element={<Favorites favorites={favorites} setFavorites={setFavorites} setDeleteIds={setDeleteIds} deleteIds={deleteIds} getMovieDetails={getMovieDetails} movieDetails={movieDetails} />} />
 
-        <Route path='*' element={<NotFound/>} />
+          <Route path='/movie/:id' element={<MoviePage onSelectedMovie={getMovieDetails} movieDetails={movieDetails} loading={loading} />}/>
+
+          <Route path='*' element={<NotFound/>} />
+
+        </Route>
 
       </Routes>
 
