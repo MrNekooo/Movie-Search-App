@@ -78,9 +78,9 @@ const App = () => {
 
           <Route path='/movie/:id' element={<MoviePage onSelectedMovie={getMovieDetails} movieDetails={movieDetails} loading={loading} />}/>
 
-          <Route path='*' element={<NotFound/>} />
-
         </Route>
+
+        <Route path='*' element={<NotFound/>} />
 
       </Routes>
 
