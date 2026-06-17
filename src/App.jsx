@@ -6,6 +6,7 @@ import { BiUser } from 'react-icons/bi';
 
 import Home from '../Components/Home';
 import Favorites from '../Components/Favorites';
+import MoviePage from '../Components/MoviePage';
 
 const App = () => {
 
@@ -15,7 +16,6 @@ const App = () => {
   const[favorites, setFavorites] = useState([])
   const[deleteIds, setDeleteIds] = useState(new Set())
   const[movieDetails, setMovieDetails] = useState(null)
-  const[showDetails, setShowDetails] = useState(false)
   const[loading, setLoading] = useState(false)
 
 
@@ -52,7 +52,6 @@ const App = () => {
       }
       
       setMovieDetails(data)
-      setShowDetails(true)
 
     } catch(error) {
 
@@ -76,9 +75,11 @@ const App = () => {
     
       <Routes>
 
-        <Route path='/' element={<Home movies={movies} setMovies={setMovies} movieDetails={movieDetails} setMovieDetails={setMovieDetails} showDetails={showDetails} setShowDetails={setShowDetails} getMovieDetails={getMovieDetails} favorites={favorites} setFavorites={setFavorites} loading={loading} setLoading={setLoading} />}/>
+        <Route path='/' element={<Home movies={movies} setMovies={setMovies} movieDetails={movieDetails} setMovieDetails={setMovieDetails} getMovieDetails={getMovieDetails} favorites={favorites} setFavorites={setFavorites} loading={loading} setLoading={setLoading} />}/>
 
-        <Route path='/favorites' element={<Favorites favorites={favorites} setFavorites={setFavorites} setDeleteIds={setDeleteIds} deleteIds={deleteIds} getMovieDetails={getMovieDetails} movieDetails={movieDetails} showDetails={showDetails} setShowDetails={setShowDetails} />} />
+        <Route path='/favorites' element={<Favorites favorites={favorites} setFavorites={setFavorites} setDeleteIds={setDeleteIds} deleteIds={deleteIds} getMovieDetails={getMovieDetails} movieDetails={movieDetails} />} />
+
+        <Route path='/movie/:id' element={<MoviePage onSelectedMovie={getMovieDetails} movieDetails={movieDetails} loading={loading} />}/>
 
       </Routes>
 

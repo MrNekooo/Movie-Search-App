@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 
 import SearchBar from '../Components/SearchBar';
 import MovieList from '../Components/MovieList';
-import MoviesDetails from '../Components/MoviesDetails';
 
 
-const Home = ({movies, setMovies, movieDetails, setMovieDetails, showDetails, setShowDetails, getMovieDetails, favorites, setFavorites, loading, setLoading}) => {
+const Home = ({movies, setMovies, movieDetails, setMovieDetails, getMovieDetails, favorites, setFavorites, loading, setLoading}) => {
 
 
     const API_KEY = "6e1fea8";
@@ -32,7 +31,6 @@ const Home = ({movies, setMovies, movieDetails, setMovieDetails, showDetails, se
         
         setMovies(data.Search)
         setMovieDetails(null)
-        setShowDetails(false)
         setHasSearch(false)
 
         } catch(error) {
@@ -53,7 +51,7 @@ const Home = ({movies, setMovies, movieDetails, setMovieDetails, showDetails, se
 
             <SearchBar movies={movies} onSearch={searchMovies}/>
             <MovieList movies={movies} loading={loading} onSelectedMovie={getMovieDetails} hasSearched={hasSearched} favorites={favorites} setFavorites={setFavorites} />
-            {showDetails && <MoviesDetails movieDetails={movieDetails} setShowDetails={setShowDetails} />}
+
         </div>
     )
 }

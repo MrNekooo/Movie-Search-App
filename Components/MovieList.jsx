@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { HiHeart } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 
 const MovieList = ({movies, loading, onSelectedMovie, hasSearched, favorites, setFavorites}) => {
 
@@ -14,6 +15,8 @@ const MovieList = ({movies, loading, onSelectedMovie, hasSearched, favorites, se
 
     }
 
+    const navigate = useNavigate()
+
     return (
         <>
             <p className='text-center mt-10 font-semibold'> {loading && "LOADING . . ."} </p>
@@ -23,7 +26,7 @@ const MovieList = ({movies, loading, onSelectedMovie, hasSearched, favorites, se
 
                     <li     key={movie.imdbID}
                             className=' flex flex-col justify-between items-center bg-linear-120 to-gray-800 from-black/60 cursor-pointer hover:scale-101 transition-all duration-100 gap-3 px-3 py-5 rounded-2xl w-full max-sm:w-70 m-auto '
-                            onClick={() => onSelectedMovie(movie.imdbID)}>
+                            onClick={() => navigate(`/movie/${movie.imdbID}`)}>
                         
                         <div className='w-full'>
                             <img className='mx-auto rounded-xl w-70 h-100 object-cover' src={movie.Poster} alt={movie.Title} />
