@@ -25,7 +25,7 @@ const MovieList = ({movies, loading, onSelectedMovie, hasSearched, favorites, se
                 {movies.map((movie) => (
 
                     <li     key={movie.imdbID}
-                            className=' flex flex-col justify-between items-center bg-linear-120 to-gray-800 from-black/60 cursor-pointer hover:scale-101 transition-all duration-100 gap-3 px-3 py-5 rounded-2xl w-full max-sm:w-70 m-auto '
+                            className=' flex flex-col justify-between items-center bg-black/50 cursor-pointer hover:scale-101 transition-all duration-100 gap-3 px-3 py-5 rounded-2xl w-full max-sm:w-70 m-auto '
                             onClick={() => navigate(`/movie/${movie.imdbID}`)}>
                         
                         <div className='w-full'>
