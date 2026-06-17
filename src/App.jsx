@@ -7,6 +7,7 @@ import { BiUser } from 'react-icons/bi';
 import Home from '../Components/Home';
 import Favorites from '../Components/Favorites';
 import MoviePage from '../Components/MoviePage';
+import NotFound from '../Components/NotFound';
 
 const App = () => {
 
@@ -80,6 +81,8 @@ const App = () => {
         <Route path='/favorites' element={<Favorites favorites={favorites} setFavorites={setFavorites} setDeleteIds={setDeleteIds} deleteIds={deleteIds} getMovieDetails={getMovieDetails} movieDetails={movieDetails} />} />
 
         <Route path='/movie/:id' element={<MoviePage onSelectedMovie={getMovieDetails} movieDetails={movieDetails} loading={loading} />}/>
+
+        <Route path='*' element={<NotFound/>} />
 
       </Routes>
 
