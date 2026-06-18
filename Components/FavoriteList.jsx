@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const FavoriteList = ({favorites, deleteFavorite, deleteIds, onSelectedMovie}) => {
+const FavoriteList = ({favorites, deleteFavorite, deleteIds}) => {
 
     const navigate = useNavigate()
 

@@ -16,6 +16,7 @@ const MoviePage = ({ onSelectedMovie, movieDetails, loading }) => {
 
     return (
         <>
+            {console.log(movieDetails)}
             <p className='text-center font-semibold'> {loading && "LOADING . . ."} </p>
             <div className='flex justify-center items-center transition-all duration-100 w-full'>
         

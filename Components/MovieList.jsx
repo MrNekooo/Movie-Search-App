@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { HiHeart } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 
-const MovieList = ({movies, loading, onSelectedMovie, hasSearched, favorites, setFavorites}) => {
+const MovieList = ({movies, loading, hasSearched, favorites, setFavorites}) => {
 
     function handleFavorite(movie){
 
@@ -20,7 +20,7 @@ const MovieList = ({movies, loading, onSelectedMovie, hasSearched, favorites, se
     return (
         <>
             <p className='text-center mt-10 font-semibold'> {loading && "LOADING . . ."} </p>
-            <> {hasSearched && <p className='text-center font-semibold text-red-500'> "No Movies Found" </p>} </>
+            <> {hasSearched ===  "False" && !loading && <p className='text-center font-semibold text-red-500'> "No Movies Found" </p>} </>
             <ul className='grid grid-cols-5 gap-5 min-h-150 max-2xl:grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1'>
                 {movies.map((movie) => (
 
