@@ -7,6 +7,7 @@ import Favorites from '../Components/Favorites';
 import MoviePage from '../Components/MoviePage';
 import NotFound from '../Components/NotFound';
 import Layout from '../Components/Layout';
+import FavoritesProvider from '../Contexts/Favorites/FavoritesProvider';
 import useFetch from '../Hooks/useFetch'
 
 
@@ -15,26 +16,10 @@ const App = () => {
   const API_KEY = "6e1fea8";
 
   const[movieUrl, setMovieUrl] = useState(``)
-  const[favorites, setFavorites] = useState([])
   const[deleteIds, setDeleteIds] = useState(new Set())
 
   const { data, loading, error } = useFetch(movieUrl)
 
-
-
-  useEffect(() => {
-
-    const saveFavorites = localStorage.getItem('favorites')
-
-    if(saveFavorites) setFavorites(JSON.parse(saveFavorites))
-
-  },[])
-
-  useEffect(() => {
-
-    if(favorites.length > 0) localStorage.setItem('favorites', JSON.stringify(favorites))
-
-  },[favorites])
 
 
   function handleMovieDetails(id){
@@ -47,21 +32,25 @@ const App = () => {
   return (
     <div className=' min-h-screen bg-linear-120 from-indigo-800 to-pink-800 text-white py-10 px-10 flex flex-col gap-5 max-md:px-2'>
     
-      <Routes>
+      <FavoritesProvider>
 
-        <Route element={<Layout/>}>
+        <Routes>
 
-          <Route path='/' element={<Home favorites={favorites} setFavorites={setFavorites} loading={loading} />}/>
+          <Route element={<Layout/>}>
 
-          <Route path='/favorites' element={<Favorites favorites={favorites} setFavorites={setFavorites} setDeleteIds={setDeleteIds} deleteIds={deleteIds} />} />
+            <Route path='/' element={<Home />}/>
 
-          <Route path='/movie/:id' element={<MoviePage onSelectedMovie={handleMovieDetails} movieDetails={data} loading={loading} />}/>
+            <Route path='/favorites' element={<Favorites setDeleteIds={setDeleteIds} deleteIds={deleteIds} />} />
 
-        </Route>
+            <Route path='/movie/:id' element={<MoviePage onSelectedMovie={handleMovieDetails} movieDetails={data} loading={loading} />}/>
 
-        <Route path='*' element={<NotFound/>} />
+          </Route>
 
-      </Routes>
+          <Route path='*' element={<NotFound/>} />
+
+        </Routes>
+
+      </FavoritesProvider>
 
     </div>
   )

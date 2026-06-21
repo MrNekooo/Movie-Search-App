@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import FavoriteList from '../Components/FavoriteList';
+import FavoritesContext from '../Contexts/Favorites/FavoritesContext';
 
-const Favorites = ({ favorites, setFavorites, deleteIds, setDeleteIds }) => {
+const Favorites = ({ deleteIds, setDeleteIds }) => {
+
+  const{favorites, setFavorites} = useContext(FavoritesContext)
 
   function deleteFavorite(id){
     
@@ -15,7 +18,7 @@ const Favorites = ({ favorites, setFavorites, deleteIds, setDeleteIds }) => {
     <div>
 
       <h2 className='mx-auto text-center my-10 font-bold text-8xl max-w-200 max-sm:text-4xl max-sm:max-w-80'>Your Favorites</h2>
-      <FavoriteList favorites={favorites} deleteFavorite={deleteFavorite} deleteIds={deleteIds} />
+      <FavoriteList deleteFavorite={deleteFavorite} deleteIds={deleteIds} />
 
     </div>
   )

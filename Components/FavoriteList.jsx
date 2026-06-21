@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import FavoritesContext from '../Contexts/Favorites/FavoritesContext';
 
-const FavoriteList = ({favorites, deleteFavorite, deleteIds}) => {
+const FavoriteList = ({deleteFavorite, deleteIds}) => {
+
+    const{favorites} = useContext(FavoritesContext)
 
     const navigate = useNavigate()
 

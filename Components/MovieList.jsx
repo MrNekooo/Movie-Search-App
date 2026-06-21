@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { HiHeart } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
+import FavoritesContext from '../Contexts/Favorites/FavoritesContext'
 
-const MovieList = ({movies, loading, hasSearched, favorites, setFavorites}) => {
+const MovieList = ({movies, loading, hasSearched}) => {
+
+    const{favorites, setFavorites} = useContext(FavoritesContext)
 
     function handleFavorite(movie){
 
